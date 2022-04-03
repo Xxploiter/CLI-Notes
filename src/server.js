@@ -2,6 +2,12 @@ import fs from 'node:fs/promises'
 import http from 'node:http'
 import open from 'open'
 
+import path from 'node:path';
+const HTML_FILENAME = 'template.html'; // File name
+const HTML_DIR = './src/'; // Directory file is located
+
+
+
 const interpolate = (html, data) => {
   return html.replace(/\{\{\s*(\w+)\s*\}\}/g, (match, placeholder) => {
     return data[placeholder] || '';
@@ -23,7 +29,8 @@ const formatNotes = (notes) => {
 
 const createServer = (notes) => {
   return http.createServer(async (req, res) => {
-    const HTML_PATH = new URL('./template.html', import.meta.url).pathname
+    // const HTML_PATH = new URL('./template.html', import.meta.url).pathname
+    const HTML_PATH = path.join(HTML_DIR, HTML_FILENAME);
     const template = await fs.readFile(HTML_PATH, 'utf-8')
     const html = interpolate(template, {notes: formatNotes(notes)})
     
