@@ -1,3 +1,20 @@
 {
-    "notes": []
+  "notes": [
+    {
+      "tags": [
+        "first",
+        " try"
+      ],
+      "id": 1693749094646,
+      "content": "this is trying"
+    },
+    {
+      "tags": [
+        "second",
+        " try"
+      ],
+      "content": "this is trying again",
+      "id": 1693754044749
+    }
+  ]
 }
